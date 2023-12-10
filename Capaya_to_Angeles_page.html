@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capaya to Angeles</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow: hidden; /* Hide scrollbars for the video background */
+        }
+
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background-color: #f30101;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            z-index: 1; /* Ensure header appears above the video background */
+        }
+
+        #map-container {
+            position: relative;
+            height: 60vh;
+            width: 80%;
+            margin: auto; /* Center the map horizontally */
+            margin-top: 20px; /* Add margin to the top */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1; /* Ensure map appears above the video background */
+        }
+
+        #description {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add background video -->
+    <video id="bg-video" autoplay muted loop>
+        <source src="videoa/" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <h1>Capaya to Angeles</h1>
+    </header>
+
+    <div id="map-container">
+        <!-- Replace the following div with your Google Maps iframe code -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d15403.930988203063!2d120.55722155092909!3d15.15929217746673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x3396f2785f62e5f1%3A0x99f1bb8bde91efdf!2sClark%20Main%20Gate%2C%20Manuel%20A.%20Roxas%20Highway%2C%20Angeles%2C%20Pampanga!3m2!1d15.166858999999999!2d120.58259869999999!4m5!1s0x3396f2eca6daa53d%3A0xe40777b39f76e644!2sFriendship%20Plaza%2C%20Angeles%2C%20Pampanga!3m2!1d15.150701!2d120.55905!5e0!3m2!1sen!2sph!4v1701169576176!5m2!1sen!2sph" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div id="description">
+        <p>This is a route map showcasing a polyline connecting specific coordinates. Customize the map and coordinates based on your requirements.</p>
+    </div>
+
+    <!-- Remove the Google Maps JavaScript API script -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>-->
+
+    <!-- Keep your existing script for the JavaScript map if needed -->
+    <script>
+        function initMap() {
+            var mapOptions = {
+                center: { lat: 15.150584078440792, lng: 120.57503720092696 }, // Replace with your desired center coordinates
+                zoom: 12
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            var routeCoordinates = [
+                { lat: 37.7749, lng: -122.4194 },
+                { lat: 37.7749, lng: -122.4294 },
+                { lat: 37.7849, lng: -122.4294 },
+                { lat: 37.7849, lng: -122.4194 }
+            ];
+
+            var routePath = new google.maps.Polyline({
+                path: routeCoordinates,
+                geodesic: true,
+                strokeColor: '#3498db',
+                strokeOpacity: 1.0,
+                strokeWeight: 4
+            });
+
+            routePath.setMap(map);
+        }
+    </script>
+</body>
+</html>
